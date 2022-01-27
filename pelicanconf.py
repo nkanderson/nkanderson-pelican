@@ -1,6 +1,6 @@
 AUTHOR = 'Niklas Anderson'
 SITENAME = 'Niklas Anderson | Software Engineer'
-SITEURL = ''
+SITEURL = 'https://nkanderson.com'
 
 PATH = 'content'
 
