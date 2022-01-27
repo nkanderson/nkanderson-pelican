@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block header %}
+<hgroup>
+  <h1>{{SITENAME}}</h1>
+  <h2 class='tagline'>{{TAGLINE}}</h2>
+</hgroup>
+{% endblock %}
+
+{% block content %}
+<main id='content'>
+  <ul class='post-list'>
+    {% for article in articles_page.object_list %}
+    <li>
+      <article class='article'>
+        <div class='entry-content'>
+          <header>
+            <h2 class='entry-title'><a href='{{ SITEURL }}/{{ article.url }}' rel='bookmark'
+                title='link to {{ article.title|striptags }}'>{{ article.title }}</a></h2>
+          </header>
+          <h3 class='article-summary'>{{ article.summary }}</h3>
+          {{ article.content }}
+        </div><!-- /.entry-content -->
+      </article>
+    </li>
+    {% endfor %}
+  </ul><!-- /#posts-list -->
+</main><!-- /#content -->
+{% endblock content %}

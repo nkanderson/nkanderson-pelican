@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}'>
+
+<head>
+  {% block head %}
+  <meta name='author' content='{{ AUTHOR }}' />
+  <meta name='title' content='{% block title %}{{ SITENAME }}{% endblock %}' />
+  <meta name='description' content='{% block description %}{{ SITEDESCRIPTION }}{% endblock %}' />
+  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+  <meta charset='utf-8' />
+  <meta name='generator' content='Pelican' />
+
+  <!-- Page title -->
+  <title>{{ self.title() }}</title>
+
+  <!-- Favicon -->
+  <link rel='icon' type='image/png' href='{{ SITEURL }}/images/icon.png' />
+
+  <!-- Fonts and styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}' />
+  {% endblock head %}
+</head>
+
+<body>
+  <header class='base__header'>
+    <h1>
+      <a href='{{ SITEURL }}/'>{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a>
+    </h1>
+  </header><!-- /#banner -->
+  <nav class='base__nav'>
+    <ul>
+      {% for title, link in MENUITEMS %}
+        <li><a href='{{ link }}'>{{ title }}</a></li>
+      {% endfor %}
+      {% if DISPLAY_PAGES_ON_MENU %}
+        {% for p in pages %}
+          <li{% if p==page %} class='active' {% endif %}>
+            <a href='{{ SITEURL }}/{{ p.url }}'>{{ p.title }}</a>
+          </li>
+        {% endfor %}
+      {% endif %}
+      {% if DISPLAY_CATEGORIES_ON_MENU %}
+        {% for cat, null in categories %}
+          <li{% if cat==category %} class='active' {% endif %}>
+            <a href='{{ SITEURL }}/{{ cat.url }}'>{{ cat }}</a>
+          </li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </nav><!-- /#menu -->
+  {% block content %}
+  {% endblock %}
+  <footer class='base__footer'>
+    <address class='base__vcard'>
+        Proudly powered by <a href='https://getpelican.com/'>Pelican</a>,
+        which takes great advantage of <a href='https://www.python.org/'>Python</a>.
+    </address><!-- /#about -->
+  </footer><!-- /#contentinfo -->
+</body>
+
+</html>

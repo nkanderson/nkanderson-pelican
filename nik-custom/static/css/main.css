@@ -1,0 +1,61 @@
+html {
+  margin: 0;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  /* The following background image is a nod to the Django rest framework
+     It's cool, check it out! https://www.django-rest-framework.org/ */
+  background: url('/theme/images/grid.png');
+}
+
+body {
+  margin: 10px 50px;
+  line-height: 1.4;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #0500b1;
+}
+
+p {
+  font-weight: 300;
+}
+
+.post-list li {
+  margin-bottom: 36px;
+  padding-bottom: 40px;
+  border-bottom: 3px solid #0500b1;
+}
+
+img {
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+.entry-content {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  grid-column-gap: 30px;
+}
+
+.entry-content header,
+.article-summary,
+.project-content {
+  grid-column: 1;
+}
+
+.project-images {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+}
+
+.project-images figure {
+  margin-bottom: 36px;
+}

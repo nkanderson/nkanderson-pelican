@@ -1,0 +1,20 @@
+### ---------- Project Specific Files ---------- ###
+
+bin/
+lib/
+output/
+include/
+pelican/
+pelican-themes/
+pelican-plugins/
+drafts/
+
+### -------------- General Files --------------- ###
+
+### -- Compiled Source -- ###
+*.pid
+*.pyc
+*.com
+*.class
+*.o
+*.so
