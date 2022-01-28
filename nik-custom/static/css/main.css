@@ -25,18 +25,24 @@ p {
   font-weight: 300;
 }
 
-.post-list li {
-  margin-bottom: 36px;
-  padding-bottom: 40px;
-  border-bottom: 3px solid #0500b1;
-}
-
 img {
   max-width: 100%;
 }
 
 figure {
   margin: 0;
+}
+
+.base__header {
+  color: #343434;
+  border-bottom: 3px solid #0500b1;
+  margin-bottom: 24px;
+}
+
+.post-list li {
+  margin-bottom: 36px;
+  padding-bottom: 40px;
+  border-bottom: 3px solid #0500b1;
 }
 
 .entry-content {
@@ -56,6 +62,34 @@ figure {
   grid-row: 1 / span 4;
 }
 
+.project-content {
+  margin-top: 0;
+}
+
 .project-images figure {
   margin-bottom: 36px;
+}
+
+/* Adjusting alignment to account for drop shadow on images */
+figure img {
+  margin-left: 20px;
+}
+
+figcaption {
+  margin-left: 48px;
+}
+
+@media screen and (max-width: 800px) {
+  .entry-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  figure img {
+    margin-left: 0;
+  }
+
+  figcaption {
+    margin-left: 0;
+  }
 }

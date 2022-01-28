@@ -20,15 +20,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel='stylesheet' href='{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}' />
+  <link rel='stylesheet' href='/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}' />
   {% endblock head %}
 </head>
 
 <body>
   <header class='base__header'>
-    <h1>
-      <a href='{{ SITEURL }}/'>{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a>
-    </h1>
+    <h1>{{ SITENAME }}</h1>
   </header><!-- /#banner -->
   <nav class='base__nav'>
     <ul>

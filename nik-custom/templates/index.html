@@ -14,10 +14,9 @@
       <article class='article'>
         <div class='entry-content'>
           <header>
-            <h2 class='entry-title'><a href='{{ SITEURL }}/{{ article.url }}' rel='bookmark'
-                title='link to {{ article.title|striptags }}'>{{ article.title }}</a></h2>
+            <h2 class='entry-title'>{{ article.title }}</h2>
+            <h3 class='article-summary'>{{ article.summary }}</h3>
           </header>
-          <h3 class='article-summary'>{{ article.summary }}</h3>
           {{ article.content }}
         </div><!-- /.entry-content -->
       </article>
