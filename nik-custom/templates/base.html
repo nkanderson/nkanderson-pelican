@@ -25,36 +25,37 @@
 </head>
 
 <body>
+  {% include 'github.html' %}
   <header class='base__header'>
     <h1>{{ SITENAME }}</h1>
   </header><!-- /#banner -->
   <nav class='base__nav'>
     <ul>
       {% for title, link in MENUITEMS %}
-        <li><a href='{{ link }}'>{{ title }}</a></li>
+      <li><a href='{{ link }}'>{{ title }}</a></li>
       {% endfor %}
       {% if DISPLAY_PAGES_ON_MENU %}
-        {% for p in pages %}
-          <li{% if p==page %} class='active' {% endif %}>
-            <a href='{{ SITEURL }}/{{ p.url }}'>{{ p.title }}</a>
-          </li>
+      {% for p in pages %}
+      <li{% if p==page %} class='active' {% endif %}>
+        <a href='{{ SITEURL }}/{{ p.url }}'>{{ p.title }}</a>
+        </li>
         {% endfor %}
-      {% endif %}
-      {% if DISPLAY_CATEGORIES_ON_MENU %}
+        {% endif %}
+        {% if DISPLAY_CATEGORIES_ON_MENU %}
         {% for cat, null in categories %}
-          <li{% if cat==category %} class='active' {% endif %}>
-            <a href='{{ SITEURL }}/{{ cat.url }}'>{{ cat }}</a>
+        <li{% if cat==category %} class='active' {% endif %}>
+          <a href='{{ SITEURL }}/{{ cat.url }}'>{{ cat }}</a>
           </li>
-        {% endfor %}
-      {% endif %}
+          {% endfor %}
+          {% endif %}
     </ul>
   </nav><!-- /#menu -->
   {% block content %}
   {% endblock %}
   <footer class='base__footer'>
     <address class='base__vcard'>
-        Proudly powered by <a href='https://getpelican.com/'>Pelican</a>,
-        which takes great advantage of <a href='https://www.python.org/'>Python</a>.
+      Proudly powered by <a href='https://getpelican.com/'>Pelican</a>,
+      which takes great advantage of <a href='https://www.python.org/'>Python</a>.
     </address><!-- /#about -->
   </footer><!-- /#contentinfo -->
 </body>
