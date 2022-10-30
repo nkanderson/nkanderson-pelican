@@ -18,3 +18,9 @@ drafts/
 *.class
 *.o
 *.so
+
+# Environments
+.venv
+
+# VisualStudioCode
+.vscode/*
