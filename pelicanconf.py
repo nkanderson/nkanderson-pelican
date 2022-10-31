@@ -1,6 +1,7 @@
 AUTHOR = "Niklas Anderson"
 SITENAME = "Niklas Anderson | Software Engineer"
 SITEURL = "https://nkanderson.com"
+SITEDESCRIPTION = "Niklas Anderson software engineer work and experience"
 
 PATH = "content"
 
