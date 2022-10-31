@@ -1,3 +1,7 @@
+import tinify
+from PIL import Image
+import io, os
+
 AUTHOR = "Niklas Anderson"
 SITENAME = "Niklas Anderson | Software Engineer"
 SITEURL = "https://nkanderson.com"
@@ -40,13 +44,23 @@ DEFAULT_PAGINATION = 15
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
+
+def compress_img(image):
+    API_KEY = os.environ["TINYPNG_KEY"]
+    tinify.key = API_KEY
+    source_data = io.BytesIO()
+    image.save(source_data, format="PNG")
+    result_data = tinify.from_buffer(source_data.getvalue()).to_buffer()
+    return Image.open(io.BytesIO(result_data))
+
+
 IMAGE_PROCESS = {
     "project-image": {
         "type": "responsive-image",
         "sizes": ("(min-width: 1200px) 800px, " "(min-width: 600px) 500px, " "100vw"),
         "srcset": [
-            ("500w", ["scale_in 500 500 False"]),
-            ("800w", ["scale_in 800 800 False"]),
+            ("500w", ["scale_in 500 500 False", compress_img]),
+            ("800w", ["scale_in 800 800 False", compress_img]),
         ],
         "default": "800w",
     }
