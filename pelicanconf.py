@@ -56,8 +56,9 @@ def compress_img(image):
 IMAGE_PROCESS = {
     "project-image": {
         "type": "responsive-image",
-        "sizes": ("(max-width: 600px) 500px, " "800px"),
+        "sizes": ("(max-width: 375px) 300px, " "(max-width: 600px) 500px, " "800px"),
         "srcset": [
+            ("300w", ["scale_in 300 300 False", compress_img]),
             ("500w", ["scale_in 500 500 False", compress_img]),
             ("800w", ["scale_in 800 800 False", compress_img]),
         ],
