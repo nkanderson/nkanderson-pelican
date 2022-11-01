@@ -41,8 +41,7 @@ SOCIAL = (
 
 DEFAULT_PAGINATION = 15
 
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 
 def compress_img(image):
@@ -57,7 +56,7 @@ def compress_img(image):
 IMAGE_PROCESS = {
     "project-image": {
         "type": "responsive-image",
-        "sizes": ("(min-width: 1200px) 800px, " "(min-width: 600px) 500px, " "100vw"),
+        "sizes": ("(max-width: 600px) 500px, " "800px"),
         "srcset": [
             ("500w", ["scale_in 500 500 False", compress_img]),
             ("800w", ["scale_in 800 800 False", compress_img]),
