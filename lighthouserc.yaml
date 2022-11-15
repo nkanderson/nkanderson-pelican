@@ -1,0 +1,6 @@
+ci:
+  collect:
+    staticDistDir: "./output/"
+    url: "index.html"
+  upload:
+    target: "temporary-public-storage"
