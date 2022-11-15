@@ -1,0 +1,59 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  lhci:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+          cache: "pip"
+
+      - run: pip install -r requirements.txt
+
+      - name: Cache build
+        id: cache-build
+        uses: actions/cache@v3
+        with:
+          path: ./output
+          key: ${{ runner.os }}-${{ hashFiles('**/output/*.html') }}
+
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: TINYPNG_KEY=${{ secrets.TINYPNG_KEY }} pelican content -s publishconf.py
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v9
+        id: lhci
+        with:
+          configPath: "./lighthouserc.yaml"
+          temporaryPublicStorage: true
+          runs: 3
+
+      - name: Get results URL
+        shell: bash
+        env:
+          JSON_DOC: ${{ steps.lhci.outputs.links }}
+        run: |
+          printf '%s\n' "$JSON_DOC" > lhci_manifest.json
+          results_url=$(cat lhci_manifest.json | jq 'to_entries[0].value')
+          echo "RESULTS_URL=$results_url" >> "$GITHUB_ENV"
+
+      - name: View results URL
+        run: 'echo "Lighthouse CI results: ${{ env.RESULTS_URL }}"'
+
+      - name: Add Lighthouse results to PR
+        uses: thollander/actions-comment-pull-request@v1
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          message: "Lighthouse CI results: ${{ env.RESULTS_URL }}"
